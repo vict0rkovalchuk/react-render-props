@@ -1,7 +1,6 @@
 import { useState } from "react";
-import ProductItem from "./ProductItem";
 
-export default function List({ title, items }) {
+export default function List({ title, items, render }) {
   const [isOpen, setIsOpen] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -22,9 +21,7 @@ export default function List({ title, items }) {
       </div>
       {isOpen && (
         <ul className="list">
-          {displayItems.map((product) => (
-            <ProductItem key={product.productName} product={product} />
-          ))}
+          {displayItems.map(render)}
         </ul>
       )}
 
