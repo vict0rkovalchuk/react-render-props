@@ -3,6 +3,8 @@ import "./styles.css";
 import List from "./components/List";
 import ProductItem from "./components/ProductItem";
 import CompanyItem from "./components/CompanyItem";
+import withToggles from "./HOC";
+import ProductList from "./components/ProductList";
 
 const products = Array.from({ length: 7 }, () => {
   return {
@@ -18,6 +20,8 @@ const companies = Array.from({ length: 15 }, () => {
     phrase: faker.company.catchPhrase()
   };
 });
+
+const ProductListWithToggles = withToggles(ProductList);
 
 export default function App() {
   return (
@@ -45,6 +49,10 @@ export default function App() {
             />
           )}
         />
+      </div>
+
+      <div className="col-2">
+        <ProductListWithToggles title='Products HOC' items={products}/>
       </div>
     </div>
   );
